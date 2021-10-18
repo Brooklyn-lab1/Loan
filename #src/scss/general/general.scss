@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "OpenSans", sans-serif;
   line-height: 1.5;
   min-height: 100vh;
   display: flex;
@@ -57,4 +57,10 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
 }
