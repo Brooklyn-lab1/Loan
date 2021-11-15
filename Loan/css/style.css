@@ -222,7 +222,7 @@ img {
           backdrop-filter: blur(12px);
   border-radius: 8px;
   padding: 25px;
-  color: #039AE2;
+  color: #039ae2;
   max-width: 260px;
   width: 100%;
   min-height: 170px;
@@ -235,7 +235,7 @@ img {
 
 .preview__number {
   border-radius: 50%;
-  border: 1px solid #039AE2;
+  border: 1px solid #039ae2;
   background: transparent;
   width: 21px;
   height: 21px;
@@ -275,7 +275,7 @@ img {
   font-weight: 700;
   font-size: 24px;
   line-height: 27.6px;
-  color: #03E69F;
+  color: #03e69f;
   text-transform: uppercase;
   margin-bottom: 18px;
 }
@@ -284,7 +284,7 @@ img {
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  border: 1px solid #03E69F;
+  border: 1px solid #03e69f;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -368,7 +368,7 @@ img {
   font-weight: 600;
   font-size: 24px;
   line-height: 33.6px;
-  color: #039AE2;
+  color: #039ae2;
   margin-bottom: 20px;
 }
 
@@ -464,17 +464,97 @@ img {
 
 .contact {
   background: url("../img/background2.jpg") no-repeat center/cover;
+  padding: 85px 0;
 }
 
-.form {
-  padding: 35px 40px 30px;
+.contact__wrapper {
   background: rgba(255, 255, 255, 0.8);
   -webkit-backdrop-filter: blur(12px);
           backdrop-filter: blur(12px);
   border-radius: 14px;
+  padding: 35px 40px 30px;
   max-width: 480px;
+  min-height: 608px;
+}
+
+.contact__prev {
+  margin-bottom: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.contact__prev.disable {
+  color: #d0d0d0;
+}
+
+.contact__prev.disable .contact__arrow {
+  fill: #d0d0d0;
+}
+
+.contact__arrow {
+  width: 18px;
+  height: 20px;
+  fill: #313131;
+  margin-right: 3px;
+  -webkit-transform: rotate(-180deg);
+      -ms-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+
+.contact__body {
   width: 100%;
-  min-height: 570px;
+  overflow: hidden;
+}
+
+.contact__progress-bar {
+  font-size: 16px;
+  line-height: 90%;
+  margin-bottom: 15px;
+}
+
+.contact__progres-number {
+  position: relative;
+  margin-right: 80px;
+}
+
+.contact__progres-number::before {
+  position: absolute;
+  content: "";
+  width: 60px;
+  height: 1px;
+  background: #313131;
+  left: 18px;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+
+.form__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.form__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+
+.form__content {
+  min-height: 330px;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -487,52 +567,10 @@ img {
           flex-direction: column;
 }
 
-.form__header {
-  margin-bottom: 15px;
-}
-
-.form__back {
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 90%;
-  color: #313131;
-  cursor: pointer;
-}
-
-.form__back_hide {
-  color: #d0d0d0;
-}
-
-.form__num-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 40px;
-}
-
-.form__num {
-  font-size: 16px;
-  line-height: 90%;
-  color: #313131;
-}
-
-.form__num_last {
-  position: relative;
-  padding-left: 80px;
-}
-
-.form__num_last::before {
-  position: absolute;
-  content: "";
-  width: 60px;
-  height: 1px;
-  left: 10px;
-  top: 50%;
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
-  background: #313131;
-  border-radius: 2px;
+.form__content.no-title {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .form__title {
@@ -542,12 +580,12 @@ img {
   color: #313131;
 }
 
-.form__radio {
+.form__radio-btn {
   cursor: pointer;
 }
 
-.form__radio:not(:first-child) {
-  margin-top: 28px;
+.form__radio-btn:not(:last-child) {
+  margin-bottom: 25px;
 }
 
 .form__radio-text {
@@ -622,20 +660,10 @@ img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0 auto;
+  margin: 60px auto 0;
   color: #fff;
   text-transform: uppercase;
   cursor: pointer;
-}
-
-.form__body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 
 .footer__body {

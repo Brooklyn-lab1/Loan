@@ -1,60 +1,88 @@
 .contact {
    background: url("../img/background2.jpg") no-repeat center/cover;
-}
+   padding: 85px 0;
 
-.form {
-   padding: 35px 40px 30px;
-   background: rgba(255, 255, 255, 0.8);
-   backdrop-filter: blur(12px);
-   border-radius: 14px;
-   max-width: 480px;
-   width: 100%;
-   min-height: 570px;
-   display: flex;
-   justify-content: space-between;
-   flex-direction: column;
-
-   &__header {
-      margin-bottom: 15px;
+   &__wrapper {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      border-radius: 14px;
+      padding: 35px 40px 30px;
+      max-width: 480px;
+      min-height: 608px;
    }
 
-   &__back {
-      font-weight: 600;
-      font-size: 12px;
-      line-height: 90%;
-      color: #313131;
+   &__prev {
+      margin-bottom: 45px;
+      display: flex;
+      align-items: center;
       cursor: pointer;
 
-      &_hide {
-         color: #d0d0d0;
+      &.disable {
+         color: $grey2;
+
+         .contact__arrow {
+            fill: $grey2;
+         }
       }
    }
 
-   &__num-wrapper {
-      display: flex;
-      margin-top: 40px;
+   &__arrow {
+      width: 18px;
+      height: 20px;
+      fill: $black;
+      margin-right: 3px;
+      transform: rotate(-180deg);
    }
 
-   &__num {
+   &__body {
+      width: 100%;
+      overflow: hidden;
+   }
+
+   &__progress-bar {
       font-size: 16px;
       line-height: 90%;
-      color: #313131;
+      margin-bottom: 15px;
+   }
 
-      &_last {
-         position: relative;
-         padding-left: 80px;
+   &__progres-number {
+      position: relative;
+      margin-right: 80px;
 
-         &::before {
-            position: absolute;
-            content: "";
-            width: 60px;
-            height: 1px;
-            left: 10px;
-            top: 50%;
-            transform: translateX(-50%);
-            background: #313131;
-            border-radius: 2px;
-         }
+      &::before {
+         position: absolute;
+         content: "";
+         width: 60px;
+         height: 1px;
+         background: $black;
+         left: 18px;
+         top: 50%;
+         transform: translate(0, -50%);
+      }
+   }
+}
+
+.form {
+   &__body {
+      display: flex;
+   
+   }
+
+   &__wrapper {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+   }
+
+   &__content {
+      min-height: 330px;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+
+      &.no-title {
+         justify-content: flex-end;
       }
    }
 
@@ -65,11 +93,11 @@
       color: #313131;
    }
 
-   &__radio {
+   &__radio-btn {
       cursor: pointer;
 
-      &:not(:first-child) {
-         margin-top: 28px;
+      &:not(:last-child) {
+         margin-bottom: 25px;
       }
    }
 
@@ -114,14 +142,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0 auto;
+      margin: 60px auto 0;
       color: #fff;
       text-transform: uppercase;
       cursor: pointer;
-   }
-
-   &__body {
-      display: flex;
-      flex-direction: column;
    }
 }
