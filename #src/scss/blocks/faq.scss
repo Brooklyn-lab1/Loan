@@ -18,6 +18,8 @@
 
    &__header {
       position: relative;
+      cursor: pointer;
+      transition: all 0.3s ease 0s;
 
       @media screen and (max-width: 576px) {
          padding: 20px 0;

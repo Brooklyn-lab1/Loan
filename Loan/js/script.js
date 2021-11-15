@@ -41,23 +41,23 @@ jQuery(document).ready(function () {
       })
    })
 
-   const labels = document.querySelectorAll('.faq__content .faq__header')
+   let headerAccord = document.querySelectorAll('.faq__header');
 
-   labels.forEach(elem => {
-      elem.addEventListener('click', function () {
-         let descActive = document.querySelectorAll('.faq__content .faq__text-wrapper.active')
+   headerAccord.forEach(head => {
+      head.addEventListener('click', function () {
+         let activeWrapperItem = document.querySelectorAll('.faq__text-wrapper.active')
 
-         descActive.forEach(elem => {
-            elem.classList.remove('active')
+         activeWrapperItem.forEach(item => {
+            item.classList.remove('active')
          })
 
-         let parentElem = this.parentNode;
-         let contentBlock = parentElem.querySelector('.faq__text-wrapper')
+         let parentItem = head.parentNode;
+         let wrapperItem = parentItem.querySelector('.faq__text-wrapper');
 
-         if (contentBlock.classList.contains("active")) {
-            contentBlock.classList.remove('active');
+         if (wrapperItem.classList.contains('active')) {
+            wrapperItem.classList.remove('active')
          } else {
-            contentBlock.classList.add('active');
+            wrapperItem.classList.add('active')
          }
       })
    })
