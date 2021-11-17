@@ -1,3 +1,44 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "personalized": ">5k",
+      "name": "1231231",
+      "lastName": "34343423423",
+      "idNumber": "123213",
+      "birthDate": "2322322",
+      "id": 1
+    },
+    {
+      "personalized": ">25k",
+      "name": "Bob",
+      "lastName": "Di",
+      "idNumber": "21332",
+      "birthDate": "28.04.91",
+      "id": 2
+    },
+    {
+      "personalized": ">5k",
+      "name": "1231231",
+      "lastName": "34343423423",
+      "idNumber": "123213",
+      "birthDate": "2322322",
+      "id": 3
+    },
+    {
+      "personalized": ">5k",
+      "name": "1231231",
+      "lastName": "34343423423",
+      "idNumber": "123213",
+      "birthDate": "2322322",
+      "id": 4
+    },
+    {
+      "personalized": ">5k",
+      "name": "1231231",
+      "lastName": "34343423423",
+      "idNumber": "123213",
+      "birthDate": "2322322",
+      "id": 5
+    }
+  ]
 }

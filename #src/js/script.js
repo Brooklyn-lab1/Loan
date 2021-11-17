@@ -76,6 +76,8 @@ jQuery(document).ready(function () {
          personalized: '',
          name: '',
          lastName: '',
+         number: '',
+         date: ''
       };
 
    const step_1 = `
@@ -85,7 +87,7 @@ jQuery(document).ready(function () {
 
    <div class="form__wrapper">
       <label for="radio1" class="form__radio-btn">
-         <input class="form__radio-input" type="radio" name="personalized" id="radio1" data-attribute='<5k' checked>
+         <input class="form__radio-input" type="radio" name="personalized" id="radio1" data-attribute='<5k'>
          <span class="form__radio-text">Less than €5,000</span>
       </label>
       <label for="radio2" class="form__radio-btn">
@@ -104,16 +106,21 @@ jQuery(document).ready(function () {
    </p>
 
    <div class="form__wrapper">
-      <input type="text" name='name' class="form__input" placeholder="First name">
+      <input type="text" name='name' class="form__input" placeholder="First name" pattern="[A-Za-zА-Яа-яЁё]">
       <input type="text" name='lastName' class="form__input" placeholder="Last name">
    </div>
 `
    const step_3 = `
+   <p></p>
    <div class="form__wrapper">
       <input type="text" name='number' class="form__input" placeholder="ID-number" data-attribute='number'>
       <input type="text" name='date' class="form__input" placeholder="Date of birth" data-attribute='birth'>
    </div>
 `
+   const step_4 = `
+   <p>The form has been sent, thanks!</p>
+`
+
    content.innerHTML = step_1;
    stepNum.innerHTML = step;
 
@@ -136,26 +143,33 @@ jQuery(document).ready(function () {
             // обращаемся к объекту и перезаписываем его ключ значение
             data.personalized = input.getAttribute('data-attribute')
          }
+         // находим input с attr совпадающим с data.personalized
+         if (data.personalized === input.getAttribute('data-attribute')) {
+            // При совпадении даем этому input checked
+            input.setAttribute('checked', true)
+         }
       })
    }
-   // запускаем проверку
-   radioChecked();
-
 
    function inputVal() {
       let inputs = content.querySelectorAll('input[type="text"]');
 
-
-
       inputs.forEach(input => {
-         input.addEventListener('mouseout', () => {
-            console.log(input);
-            console.log(input.value);
-            data.name = input.value;
-            console.log(data);
-         })
+         switch (input.getAttribute('name')) {
+            case 'name':
+               data.name = input.value;
+               break;
+            case 'lastName':
+               data.lastName = input.value;
+               break;
+            case 'number':
+               data.number = input.value;
+               break;
+            case 'date':
+               data.date = input.value;
+               break;
+         }
       })
-
    }
 
    // Счетчик вверх
@@ -170,20 +184,29 @@ jQuery(document).ready(function () {
    }
 
    function stepUp() {
-      switch (step) {
-         case 1:
+      // Если step равен 1 и data.personalized не пустой то ...
+      if (step === 1) {
+         radioChecked();
+         // Проверяем нажата ли radio button
+         if (data.personalized.length !== 0) {
             content.innerHTML = step_2;
             countUp();
-            inputVal();
             backBatton.classList.toggle('disable')
-            break;
-         case 2:
+         }
+      } else if (step === 2) {
+         inputVal();
+         // Проверяем, что заполнены оба инпута
+         if (data.name.length !== 0 && data.lastName.length !== 0) {
             content.innerHTML = step_3;
             countUp();
-            break;
-         case 3:
-            console.log('end')
-            break;
+         }
+      } else if (step === 3) {
+         inputVal();
+         // Проверяем, что заполнены оба инпута
+         if (data.number.length !== 0 && data.date.length !== 0) {
+            submitForm();
+            content.innerHTML = step_4;
+         }
       }
    }
 
@@ -215,181 +238,18 @@ jQuery(document).ready(function () {
       console.log(data)
    })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   // function toggleSteps(step) {
-   //    content.innerHTML = step
-   // }
-
-   // function radioVal(val) {
-   //    let radioInputs = document.querySelectorAll('.form__radio-input')
-   //    radioInputs.forEach(input => {
-   //       input.addEventListener('click', function () {
-   //          if (input.checked) {
-   //             data[val] = input.getAttribute('data-attribute')
-   //          }
-   //       })
-   //       if (input.checked) {
-   //          data[val] = input.getAttribute('data-attribute')
-   //       }
-   //    })
-   // }
-   // radioVal('personalized')
-
-   // function inputVal(val) {
-   //    let inputs = document.querySelectorAll('input')
-   //    inputs.forEach(input => {
-   //       console.log(input)
-   //       // input.addEventListener('click', function () {
-   //       //    if (input.checked) {
-   //       //       data[val] = input.getAttribute('data-attribute')
-   //       //    }
-   //       // })
-   //    })
-   // }
-
-   // // Счетчик степов вверх
-   // const countUp = () => {
-   //    step += 1;
-   //    stepNum.innerHTML = step;
-   // }
-
-   // // Счетчик степов вниз
-   // const countDown = () => {
-   //    step -= 1;
-   //    stepNum.innerHTML = step;
-   // }
-
-   // // Переключение степов вперед 
-   // function nextStep() {
-   //    if (step === 1) {
-   //       toggleSteps(step_2);
-   //       countUp();
-   //       radioVal('personalized');
-   //       inputVal();
-   //       console.log(data)
-
-   //       if (backBatton.classList.contains('disable')) {
-   //          backBatton.classList.remove('disable')
-   //       }
-   //    } else if (step === 2) {
-   //       toggleSteps(step_3);
-   //       countUp();
-   //    } else {
-   //       console.log('error');
-   //    }
-   // }
-
-   // // Переключение степов назад
-   // function backStep() {
-   //    if (step === 2) {
-   //       toggleSteps(step_1);
-   //       countDown();
-   //       radioVal('personalized');
-   //       inputVal();
-   //       console.log(data)
-   //       if (!backBatton.classList.contains('disable')) {
-   //          backBatton.classList.add('disable')
-   //       }
-   //    } else if (step === 3) {
-   //       toggleSteps(step_3);
-   //       countDown();
-   //    }
-   // }
-
-   // // Клик по кнопку Вперед
-   // button.addEventListener('click', (e) => {
-   //    e.preventDefault()
-   //    nextStep()
-   // })
-
-   // // Клик по кнопке Назад
-   // backBatton.addEventListener('click', () => {
-   //    backStep()
-   // })
-
+   // отпраква формы 
+   const submitForm = () => {
+      $.ajax({
+         url: 'http://localhost:8000/posts',
+         type: 'POST',
+         data: {
+            personalized: data.personalized,
+            name: data.name,
+            lastName: data.lastName,
+            idNumber: data.number,
+            birthDate: data.date
+         }
+      })
+   }
 });
-
-
-
-// async function postData(url = '', data = { personalized: data }) {
-//    const response = await fetch(url, {
-//       method: 'POST',
-//       mode: 'cors',
-//       cache: 'no-cache',
-//       credentials: 'same-origin',
-//       headers: {
-//          'Content-Type': 'application/json'
-//       },
-//       redirect: 'follow',
-//       referrerPolicy: 'no-referrer',
-//       body: JSON.stringify(data)
-//    })
-//    return await response.json();
-// }
-// postData('http://localhost:8000/posts')
-//    .then((data) => {
-//       console.log(data);
-//    });
