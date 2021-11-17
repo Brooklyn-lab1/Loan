@@ -239,17 +239,31 @@ jQuery(document).ready(function () {
    })
 
    // отпраква формы 
-   const submitForm = () => {
-      $.ajax({
-         url: 'http://localhost:8000/posts',
-         type: 'POST',
-         data: {
-            personalized: data.personalized,
-            name: data.name,
-            lastName: data.lastName,
-            idNumber: data.number,
-            birthDate: data.date
-         }
-      })
+   const submitForm = async () => {
+      try {
+         await $.ajax({
+            url: 'http://localhost:8000/posts',
+            type: 'POST',
+            data: {
+               personalized: data.personalized,
+               name: data.name,
+               lastName: data.lastName,
+               idNumber: data.number,
+               birthDate: data.date
+            }
+         })
+      } catch (error) {
+         console.error(error);
+      }
    }
+
+   // const submitForm = async () => {
+   //    await fetch('http://localhost:8000/posts', {
+   //       method: 'POST',
+   //       headers: {
+   //          'Content-Type': 'application/json;charset=utf-8'
+   //       },
+   //       body: JSON.stringify(data)
+   //    });
+   // }
 });
